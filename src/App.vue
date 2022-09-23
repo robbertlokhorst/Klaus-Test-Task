@@ -1,27 +1,29 @@
 <template>
-  <RecycleScroller
-    v-slot="{ item }"
-    class="scroller"
-    :items="users"
-    :item-size="64"
-    key-field="id"
-  >
-    <div>
+  <div class="wrapper">
+    <RecycleScroller
+      v-slot="{ item }"
+      class="scroller"
+      :items="users"
+      :item-size="64"
+      key-field="id"
+    >
       <div>
-        <img
-          v-if="item.avatar"
-          :key="item.avatar"
-          :src="item.avatar"
-          width="32"
-        >
+        <div>
+          <img
+            v-if="item.avatar"
+            :key="item.avatar"
+            :src="item.avatar"
+            width="32"
+          >
+        </div>
+        <div>
+          <div>{{ item.name }}</div>
+          <div>{{ item.email }}</div>
+        </div>
+        <div>{{ item.role }}</div>
       </div>
-      <div>
-        <div>{{ item.name }}</div>
-        <div>{{ item.email }}</div>
-      </div>
-      <div>{{ item.role }}</div>
-    </div>
-  </RecycleScroller>
+    </RecycleScroller>
+  </div>
 </template>
 
 <script>
@@ -44,7 +46,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+html,
+body {
+  background: #EDF2F7;
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+.wrapper {
+  padding: 32px;
+  width: 780px;
+  height: 848px;
+  margin: 0 auto;
+}
+</style>
+
+<style scoped lang="scss">
 .scroller {
   height: 600px;
 }
