@@ -1,7 +1,13 @@
 <template>
-  <ul>
-    <li v-for="user in users" v-bind:key="user.id">{{ user.name }}</li>
-  </ul>
+  <RecycleScroller
+    class="scroller"
+    :items="users"
+    :item-size="32"
+    key-field="id"
+    v-slot="{ item }"
+  >
+    <div>{{ item.name }}</div>
+  </RecycleScroller>
 </template>
 
 <script>
@@ -23,3 +29,16 @@
     },
   }
 </script>
+
+<style scoped>
+  .scroller {
+    height: 600px;
+  }
+  
+  .user {
+    height: 32%;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+  }
+</style>
