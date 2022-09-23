@@ -1,5 +1,25 @@
 <template>
-  <div id="app">
-    <h1>Hello world</h1>
-  </div>
+  <ul>
+    <li v-for="user in users" v-bind:key="user.id">{{ user.name }}</li>
+  </ul>
 </template>
+
+<script>
+  export default {
+    name: 'App',
+
+    data() {
+      return {
+        users: [],
+      }
+    },
+
+    created() {
+      fetch('/api/users')
+        .then((res) => res.json())
+        .then((json) => {
+          this.users = json.users
+        })
+    },
+  }
+</script>
