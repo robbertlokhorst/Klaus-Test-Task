@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <AppHeader />
     <RecycleScroller
       v-slot="{ item }"
       class="scroller"
@@ -27,15 +28,17 @@
 </template>
 
 <script>
+import AppHeader from '@/components/AppHeader.vue'
 export default {
   name: 'App',
-
+  components: {
+    AppHeader
+  },
   data () {
     return {
       users: []
     }
   },
-
   created () {
     fetch('/api/users')
       .then((res) => res.json())
@@ -54,6 +57,12 @@ body {
 
 html {
   font-family: 'Inter', sans-serif;
+  color: #1A202C;
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: 500;
 }
 
 .wrapper {

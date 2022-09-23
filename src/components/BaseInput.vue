@@ -4,10 +4,10 @@
     :class="inputClasses"
   >
     <div
-      v-if="hasIcon"
-      class="base-input__icon-wrap"
+      v-if="hasPrepend"
+      class="base-input__prepend"
     >
-      <slot name="icon" />
+      <slot name="prepend" />
     </div>
     <input
       class="base-input__input"
@@ -22,12 +22,11 @@ export default {
   computed: {
     inputClasses () {
       return {
-        'base-input--has-icon': this.hasIcon,
-        'base-input--no-icon': !this.hasIcon
+        'base-input--has-prepend': this.hasPrepend
       }
     },
-    hasIcon () {
-      return !!this.$slots.icon
+    hasPrepend () {
+      return !!this.$slots.prepend
     }
   }
 }
@@ -37,11 +36,14 @@ export default {
 .base-input {
   position: relative;
 
-  &__icon-wrap {
+  &__prepend {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__input {
@@ -70,7 +72,7 @@ export default {
     }
   }
 
-  &--has-icon {
+  &--has-prepend {
     .base-input__input {
       padding-left: 36px;
     }
