@@ -6,9 +6,7 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 
 Vue.use(VueVirtualScroller)
 
-if (process.env.NODE_ENV === "development") {
-  makeServer()
-}
+makeServer()
 
 new Vue({
   render: (h) => h(App)

@@ -1,13 +1,13 @@
-import { createServer } from "miragejs"
+import { createServer } from 'miragejs'
 import users from './users'
 
 export function makeServer () {
   const server = createServer({
-    routes() {
+    routes () {
       this.namespace = 'api'
 
       this.get('/users', () => users)
-    },
+    }
   })
 
   return server

@@ -12,8 +12,11 @@
     "vue-virtual-scroller": "^1.0.10"
   },
   "devDependencies": {
+    "@nabla/vite-plugin-eslint": "^1.4.1",
+    "@rushstack/eslint-patch": "^1.2.0",
     "@vitejs/plugin-legacy": "^2.0.0",
     "@vitejs/plugin-vue2": "^1.1.2",
+    "@vue/eslint-config-standard": "^8.0.1",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^9.0.0",
     "miragejs": "^0.1.45",
