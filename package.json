@@ -20,6 +20,7 @@
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^9.0.0",
     "miragejs": "^0.1.45",
+    "sass": "^1.55.0",
     "terser": "^5.14.2",
     "vite": "^3.0.2"
   }
