@@ -2,32 +2,39 @@
   <RecycleScroller
     class="scroller"
     :items="users"
-    :item-size="32"
+    :item-size="64"
     key-field="id"
     v-slot="{ item }"
   >
-    <div>{{ item.name }}</div>
+    <div style="height: 64px;">
+      <div><img v-if="item.avatar" :key="item.avatar" :src="item.avatar" width="32" /></div>
+      <div>
+        <div>{{ item.name }}</div>
+        <div>{{ item.email }}</div>
+      </div>
+      <div>{{ item.role }}</div>
+    </div>
   </RecycleScroller>
 </template>
 
 <script>
-  export default {
-    name: 'App',
+export default {
+  name: 'App',
 
-    data() {
-      return {
-        users: [],
-      }
-    },
+  data() {
+    return {
+      users: [],
+    }
+  },
 
-    created() {
-      fetch('/api/users')
-        .then((res) => res.json())
-        .then((json) => {
-          this.users = json.users
-        })
-    },
-  }
+  created() {
+    fetch('/api/users')
+      .then((res) => res.json())
+      .then((json) => {
+        this.users = json.users
+      })
+  },
+}
 </script>
 
 <style scoped>
