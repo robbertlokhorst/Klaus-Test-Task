@@ -48,27 +48,27 @@ export default {
 
   &__input {
     background: white;
-    border: 1px solid #E2E8F0;
+    border: 1px solid $c-gray-30;
     border-radius: 4px;
     font-size: 14px;
     line-height: 1.5;
-    color: #1A202C;
+    color: $c-gray-90;
     padding: 9px 12px 8px 12px;
 
     &::-webkit-input-placeholder {
-      color: #A0AEC0;
+      color: $c-gray-50;
     }
 
     &::-moz-placeholder {
-      color: #A0AEC0;
+      color: $c-gray-50;
     }
 
     &:-ms-input-placeholder {
-      color: #A0AEC0;
+      color: $c-gray-50;
     }
 
     &:-moz-placeholder {
-      color: #A0AEC0;
+      color: $c-gray-50;
     }
   }
 

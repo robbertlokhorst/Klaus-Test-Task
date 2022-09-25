@@ -54,8 +54,8 @@ export default {
   font-weight: 500;
   font-size: 14px;
   padding: 8.5px 12px;
-  background: #475DE5;
-  border: 1px solid #475DE5;
+  background: $c-brand-50;
+  border: 1px solid $c-brand-50;
 
   &__span {
     //
@@ -63,8 +63,8 @@ export default {
 
   &--theme-gray {
     background: white;
-    border: 1px solid #E2E8F0;
-    color: #4A5568;
+    border: 1px solid $c-gray-30;
+    color: $c-gray-70;
   }
 
   &--size-sm {

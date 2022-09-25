@@ -7,6 +7,13 @@ import eslintPlugin from '@nabla/vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/variables.scss";`
+      }
+    }
+  },
   plugins: [
     vue2(),
     legacy({

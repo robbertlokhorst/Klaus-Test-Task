@@ -58,12 +58,12 @@ export default {
 <style lang="scss">
 html,
 body {
-  background: #EDF2F7;
+  background: $c-gray-20;
 }
 
 html {
   font-family: 'Inter', sans-serif;
-  color: #1A202C;
+  color: $c-gray-90;
   line-height: 1.5;
 }
 
