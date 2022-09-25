@@ -3,29 +3,42 @@
     <AppHeader />
     <div class="user-list">
       <ActionBar />
-      <RecycleScroller
-        v-slot="{ item }"
-        class="scroller"
-        :items="users"
-        :item-size="64"
-        key-field="id"
-      >
-        <div>
+      <div class="user-list__wrap">
+        <ListRow>
+          <template #checkbox>
+            <CheckboxInput />
+          </template>
+          <template #user>
+            <ListLabel>User</ListLabel>
+          </template>
+          <template #permission>
+            <ListLabel>Permission</ListLabel>
+          </template>
+        </ListRow>
+        <RecycleScroller
+          v-slot="{ item }"
+          class="scroller"
+          :items="users"
+          :item-size="64"
+          key-field="id"
+        >
           <div>
-            <img
-              v-if="item.avatar"
-              :key="item.avatar"
-              :src="item.avatar"
-              width="32"
-            >
+            <div>
+              <img
+                v-if="item.avatar"
+                :key="item.avatar"
+                :src="item.avatar"
+                width="32"
+              >
+            </div>
+            <div>
+              <div>{{ item.name }}</div>
+              <div>{{ item.email }}</div>
+            </div>
+            <div>{{ item.role }}</div>
           </div>
-          <div>
-            <div>{{ item.name }}</div>
-            <div>{{ item.email }}</div>
-          </div>
-          <div>{{ item.role }}</div>
-        </div>
-      </RecycleScroller>
+        </RecycleScroller>
+      </div>
     </div>
   </div>
 </template>
@@ -33,12 +46,18 @@
 <script>
 import AppHeader from '@/components/AppHeader.vue'
 import ActionBar from '@/components/ActionBar.vue'
+import ListRow from '@/components/ListRow.vue'
+import CheckboxInput from '@/components/CheckboxInput.vue'
+import ListLabel from '@/components/ListLabel.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    ActionBar
+    ActionBar,
+    ListRow,
+    CheckboxInput,
+    ListLabel
   },
   data () {
     return {
@@ -89,14 +108,12 @@ h2 {
   background: white;
   border-radius: 8px;
   height: 726px;
+
+  &__wrap {
+    padding: 0 16px;
+  }
 }
 .scroller {
   height: 600px;
-}
-.user {
-  height: 32%;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
 }
 </style>
