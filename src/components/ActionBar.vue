@@ -7,20 +7,17 @@
       <BaseButton
         size="sm"
         theme="gray"
+        icon-align="left"
       >
-        <template #prepend>
-          <img :src="require('@/assets/images/edit.svg')">
-        </template>
+        <img :src="require('@/assets/images/edit.svg')">
         Edit
       </BaseButton>
       <BaseButton
         size="sm"
         theme="gray"
-        class="shadow-xs"
+        icon-align="left"
       >
-        <template #prepend>
-          <img :src="require('@/assets/images/trash.svg')">
-        </template>
+        <img :src="require('@/assets/images/trash.svg')">
         Delete
       </BaseButton>
     </div>

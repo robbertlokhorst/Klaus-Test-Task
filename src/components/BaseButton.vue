@@ -3,21 +3,14 @@
     class="base-button"
     :class="buttonClasses"
   >
-    <div
-      v-if="hasPrepend"
-      class="base-button__prepend"
-    >
-      <slot name="prepend" />
-    </div>
-    <span class="base-button__span">
-      <slot />
-    </span>
+    <slot />
   </button>
 </template>
 
 <script>
 const availableThemes = ['brand', 'gray']
 const availableSizes = ['sm', 'lg']
+const iconAlignOptions = ['left', 'right']
 
 export default {
   props: {
@@ -30,6 +23,14 @@ export default {
       type: String,
       default: 'lg',
       validator: value => availableSizes.includes(value)
+    },
+    iconAlign: {
+      type: String,
+      validator: value => iconAlignOptions.includes(value)
+    },
+    icon: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -37,11 +38,9 @@ export default {
       return {
         [`base-button--theme-${this.theme}`]: this.theme,
         [`base-button--size-${this.size}`]: this.size,
-        'base-button--has-prepend': this.hasPrepend
+        [`base-button--icon-align-${this.iconAlign}`]: this.iconAlign,
+        'base-button--icon': this.icon
       }
-    },
-    hasPrepend () {
-      return !!this.$slots.prepend
     }
   }
 }
@@ -56,29 +55,35 @@ export default {
   padding: 8.5px 12px;
   background: $c-brand-50;
   border: 1px solid $c-brand-50;
-
-  &__span {
-    //
-  }
+  display: flex;
+  gap: 8px;
+  align-items: center;
 
   &--theme-gray {
     background: white;
     border: 1px solid $c-gray-30;
     color: $c-gray-70;
+    box-shadow: 0px 1px 2px rgba(45, 55, 72, 0.08);
   }
 
   &--size-sm {
     padding: 4.5px 11.5px;
   }
 
-  &--has-prepend {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  &--size-xs {
+    padding: 4.5px 6px;
+  }
 
-    &.base-button--size-sm {
-      padding-left: 8px;
-    }
+  &--icon {
+    padding: 7px;
+  }
+
+  &--icon-align-left {
+    padding-left: 8px;
+  }
+
+  &--icon-align-right {
+    padding-right: 8px;
   }
 }
 </style>
