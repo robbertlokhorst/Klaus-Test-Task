@@ -3,42 +3,26 @@
     <AppHeader />
     <div class="user-list">
       <ActionBar />
-      <div class="user-list__wrap">
-        <ListRow>
-          <template #checkbox>
-            <CheckboxInput />
-          </template>
-          <template #user>
-            <ListLabel>User</ListLabel>
-          </template>
-          <template #permission>
-            <ListLabel>Permission</ListLabel>
-          </template>
-        </ListRow>
-        <RecycleScroller
-          v-slot="{ item }"
-          class="scroller"
-          :items="users"
-          :item-size="64"
-          key-field="id"
-        >
-          <div>
-            <div>
-              <img
-                v-if="item.avatar"
-                :key="item.avatar"
-                :src="item.avatar"
-                width="32"
-              >
-            </div>
-            <div>
-              <div>{{ item.name }}</div>
-              <div>{{ item.email }}</div>
-            </div>
-            <div>{{ item.role }}</div>
-          </div>
-        </RecycleScroller>
-      </div>
+      <ListRow class="user-list__head-row">
+        <template #checkbox>
+          <CheckboxInput />
+        </template>
+        <template #user>
+          <ListLabel>User</ListLabel>
+        </template>
+        <template #permission>
+          <ListLabel>Permission</ListLabel>
+        </template>
+      </ListRow>
+      <RecycleScroller
+        v-slot="{ item }"
+        class="scroller"
+        :items="users"
+        :item-size="68"
+        key-field="id"
+      >
+        <UserRow :item="item" />
+      </RecycleScroller>
     </div>
   </div>
 </template>
@@ -49,6 +33,7 @@ import ActionBar from '@/components/ActionBar.vue'
 import ListRow from '@/components/ListRow.vue'
 import CheckboxInput from '@/components/CheckboxInput.vue'
 import ListLabel from '@/components/ListLabel.vue'
+import UserRow from './components/UserRow.vue'
 
 export default {
   name: 'App',
@@ -57,7 +42,8 @@ export default {
     ActionBar,
     ListRow,
     CheckboxInput,
-    ListLabel
+    ListLabel,
+    UserRow
   },
   data () {
     return {
@@ -105,11 +91,11 @@ h2 {
   border-radius: 8px;
   height: 726px;
 
-  &__wrap {
-    padding: 0 16px;
+  &__head-row {
+    padding: 0 32px 4px 32px;
   }
 }
 .scroller {
-  height: 600px;
+  height: 624px;
 }
 </style>
