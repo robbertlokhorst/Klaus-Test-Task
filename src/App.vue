@@ -61,10 +61,17 @@ html {
   line-height: 1.5;
 }
 
-h1 {
+h1,
+h2 {
   font-weight: 500;
 }
 
+.shadow-xs {
+  box-shadow: 0px 1px 2px rgba(45, 55, 72, 0.08);
+}
+</style>
+
+<style scoped lang="scss">
 .wrapper {
   padding: 32px;
   width: 780px;
