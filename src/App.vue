@@ -1,38 +1,44 @@
 <template>
   <div class="wrapper">
     <AppHeader />
-    <RecycleScroller
-      v-slot="{ item }"
-      class="scroller"
-      :items="users"
-      :item-size="64"
-      key-field="id"
-    >
-      <div>
+    <div class="user-list">
+      <ActionBar />
+      <RecycleScroller
+        v-slot="{ item }"
+        class="scroller"
+        :items="users"
+        :item-size="64"
+        key-field="id"
+      >
         <div>
-          <img
-            v-if="item.avatar"
-            :key="item.avatar"
-            :src="item.avatar"
-            width="32"
-          >
+          <div>
+            <img
+              v-if="item.avatar"
+              :key="item.avatar"
+              :src="item.avatar"
+              width="32"
+            >
+          </div>
+          <div>
+            <div>{{ item.name }}</div>
+            <div>{{ item.email }}</div>
+          </div>
+          <div>{{ item.role }}</div>
         </div>
-        <div>
-          <div>{{ item.name }}</div>
-          <div>{{ item.email }}</div>
-        </div>
-        <div>{{ item.role }}</div>
-      </div>
-    </RecycleScroller>
+      </RecycleScroller>
+    </div>
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
+import ActionBar from '@/components/ActionBar.vue'
+
 export default {
   name: 'App',
   components: {
-    AppHeader
+    AppHeader,
+    ActionBar
   },
   data () {
     return {
@@ -78,9 +84,12 @@ h2 {
   height: 848px;
   margin: 0 auto;
 }
-</style>
 
-<style scoped lang="scss">
+.user-list {
+  background: white;
+  border-radius: 8px;
+  height: 726px;
+}
 .scroller {
   height: 600px;
 }
