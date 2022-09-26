@@ -21,7 +21,13 @@
 <script>
 export default {
   inheritAttrs: false,
-  props: ['value'],
+  props: {
+    value: {
+      type: String,
+      default: '',
+      required: false
+    }
+  },
   computed: {
     inputClasses () {
       return {

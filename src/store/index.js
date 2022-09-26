@@ -21,7 +21,7 @@ const store = new Vuex.Store({
           return name.toLowerCase().includes(s) || email.toLowerCase().includes(s) || role.toLowerCase().includes(s)
         })
         .sort((a, b) => {
-          let modifier = state.isDescSorting ? 1 : -1
+          const modifier = state.isDescSorting ? 1 : -1
           if (a[state.sortKey] < b[state.sortKey]) {
             return -1 * modifier
           }
@@ -32,7 +32,7 @@ const store = new Vuex.Store({
         })
     },
     isUserSelected: state => id => {
-      return state.changedUsersObj.hasOwnProperty(id)
+      return Object.prototype.hasOwnProperty.call(state.changedUsersObj, id)
     },
     selectedUsersLength (state) {
       return Object.keys(state.changedUsersObj).length
@@ -68,7 +68,9 @@ const store = new Vuex.Store({
     },
     deleteSelectedUsers (state) {
       const toRemove = state.changedUsersObj
-      const difference = state.users.filter(user => !toRemove.hasOwnProperty(user.id))
+      const difference = state.users.filter(({ id }) => {
+        return !Object.prototype.hasOwnProperty.call(toRemove, id)
+      })
       state.users = difference
       state.changedUsersObj = {}
     },
