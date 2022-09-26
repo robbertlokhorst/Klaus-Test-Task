@@ -18,6 +18,7 @@
         size="sm"
         theme="gray"
         icon-align="left"
+        @click="deleteSelectedUsers"
       >
         <img :src="require('@/assets/images/trash.svg')">
         Delete
@@ -28,7 +29,7 @@
 
 <script>
 import BaseButton from './BaseButton.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -39,7 +40,8 @@ export default {
     title () {
       return `${this.selectedUsersLength} user${this.selectedUsersLength === 1 ? '' : 's'} selected`
     }
-  }
+  },
+  methods: mapMutations(['deleteSelectedUsers'])
 }
 </script>
 

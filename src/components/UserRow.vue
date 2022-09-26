@@ -34,6 +34,7 @@
             size="sm"
             theme="gray"
             icon
+            @click="deleteUser(item.id)"
           >
             <img :src="require('@/assets/images/trash.svg')">
           </BaseButton>
@@ -80,7 +81,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['toggleUser']),
+    ...mapMutations(['toggleUser', 'deleteUser']),
     userSelectedUpdate (isChecked) {
       this.toggleUser({
         id: this.item.id,

@@ -27,7 +27,7 @@ const store = new Vuex.Store({
       return Object.keys(state.changedUsersObj).length
     },
     currentUsersSelected (state, getters) {
-      if (getters.selectedUsersLength < getters.users.length) {
+      if (!getters.selectedUsersLength || getters.selectedUsersLength < getters.users.length) {
         return false
       }
 
@@ -48,9 +48,19 @@ const store = new Vuex.Store({
         Vue.delete(state.changedUsersObj, id)
       }
     },
+    deleteUser (state, id) {
+      state.users = state.users.filter(u => u.id !== id)
+      Vue.delete(state.changedUsersObj, id)
+    },
     setSearchQuery (state, query) {
       state.searchQuery = query
-    }
+    },
+    deleteSelectedUsers (state) {
+      const toRemove = state.changedUsersObj
+      const difference = state.users.filter(user => !toRemove.hasOwnProperty(user.id))
+      state.users = difference
+      state.changedUsersObj = {}
+    },
   },
 
   actions: {

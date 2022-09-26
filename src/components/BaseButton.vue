@@ -2,6 +2,7 @@
   <button
     class="base-button"
     :class="buttonClasses"
+    @click="$emit('click', $event)"
   >
     <slot />
   </button>
