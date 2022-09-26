@@ -2,7 +2,10 @@
   <div class="user-row">
     <ListRow class="user-row__list-row">
       <template #checkbox>
-        <CheckboxInput />
+        <CheckboxInput
+          :is-checked="isSelected"
+          @change="userSelectedUpdate"
+        />
       </template>
       <template #user>
         <UserInfo
@@ -41,6 +44,7 @@ import CheckboxInput from '@/components/CheckboxInput.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import RoleBadge from './RoleBadge.vue'
 import UserInfo from './UserInfo.vue'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -57,6 +61,21 @@ export default {
       default: () => {
         return {}
       }
+    }
+  },
+  computed: {
+    ...mapGetters(['isUserSelected']),
+    isSelected () {
+      return this.isUserSelected(this.item.id)
+    }
+  },
+  methods: {
+    ...mapMutations(['toggleUser']),
+    userSelectedUpdate (isChecked) {
+      this.toggleUser({
+        id: this.item.id,
+        checked: isChecked
+      })
     }
   }
 }

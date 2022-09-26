@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
     <AppHeader />
-    <div class="user-list">
+    <div
+      v-if="users"
+      class="user-list"
+    >
       <ActionBar />
       <ListRow class="user-list__head-row">
         <template #checkbox>
@@ -21,7 +24,10 @@
         :item-size="68"
         key-field="id"
       >
-        <UserRow :item="item" />
+        <UserRow
+          :key="item.id"
+          :item="item"
+        />
       </RecycleScroller>
     </div>
   </div>

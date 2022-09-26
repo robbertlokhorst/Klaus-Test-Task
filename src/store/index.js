@@ -5,12 +5,30 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    users: []
+    users: [],
+    changedUsersObj: {}
+  },
+
+  getters: {
+    isUserSelected: state => id => {
+      return state.changedUsersObj.hasOwnProperty(id)
+    },
+    selectedUsersLength (state) {
+      return Object.keys(state.changedUsersObj).length
+    }
   },
 
   mutations: {
     setUsersList (state, users) {
       state.users = users
+    },
+
+    toggleUser (state, { id, checked }) {
+      if (checked) {
+        Vue.set(state.changedUsersObj, id, checked)
+      } else {
+        Vue.delete(state.changedUsersObj, id)
+      }
     }
   },
 

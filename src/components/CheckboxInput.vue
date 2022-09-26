@@ -2,8 +2,38 @@
   <input
     class="checkbox"
     type="checkbox"
+    :checked="model"
+    @change="handleChange"
   >
 </template>
+
+<script>
+export default {
+  props: {
+    isChecked: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    model: {
+      get () {
+        return this.isChecked
+      },
+      set (val) {
+        this.$emit('change', val)
+      }
+    }
+  },
+  methods: {
+    handleChange (e) {
+      const checked = e.target.checked
+
+      this.$emit('change', checked)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .checkbox {
