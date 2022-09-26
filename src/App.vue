@@ -97,5 +97,6 @@ h2 {
 }
 .scroller {
   height: 624px;
+  overflow-y: visible;
 }
 </style>

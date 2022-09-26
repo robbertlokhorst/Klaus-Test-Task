@@ -34,12 +34,11 @@
     }
 
     &--permission {
-      width: 152px;
+      width: 153px;
     }
 
     &--actions {
       width: 115px;
-      gap: 4px;
     }
   }
 }
