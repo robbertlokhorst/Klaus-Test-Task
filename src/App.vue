@@ -34,6 +34,7 @@ import ListRow from '@/components/ListRow.vue'
 import CheckboxInput from '@/components/CheckboxInput.vue'
 import ListLabel from '@/components/ListLabel.vue'
 import UserRow from './components/UserRow.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -45,18 +46,11 @@ export default {
     ListLabel,
     UserRow
   },
-  data () {
-    return {
-      users: []
-    }
-  },
+  computed: mapState(['users']),
   created () {
-    fetch('/api/users')
-      .then((res) => res.json())
-      .then((json) => {
-        this.users = json.users
-      })
-  }
+    this.getUsersList()
+  },
+  methods: mapActions(['getUsersList'])
 }
 </script>
 
