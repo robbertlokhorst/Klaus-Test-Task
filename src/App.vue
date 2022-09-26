@@ -6,17 +6,7 @@
       class="user-list"
     >
       <ActionBar />
-      <ListRow class="user-list__head-row">
-        <template #checkbox>
-          <CheckboxInput />
-        </template>
-        <template #user>
-          <ListLabel>User</ListLabel>
-        </template>
-        <template #permission>
-          <ListLabel>Permission</ListLabel>
-        </template>
-      </ListRow>
+      <HeadRow />
       <RecycleScroller
         v-slot="{ item }"
         class="scroller"
@@ -36,7 +26,7 @@
 <script>
 import AppHeader from '@/components/AppHeader.vue'
 import ActionBar from '@/components/ActionBar.vue'
-import ListRow from '@/components/ListRow.vue'
+import HeadRow from '@/components/HeadRow.vue'
 import CheckboxInput from '@/components/CheckboxInput.vue'
 import ListLabel from '@/components/ListLabel.vue'
 import UserRow from './components/UserRow.vue'
@@ -47,7 +37,7 @@ export default {
   components: {
     AppHeader,
     ActionBar,
-    ListRow,
+    HeadRow,
     CheckboxInput,
     ListLabel,
     UserRow

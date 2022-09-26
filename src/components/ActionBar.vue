@@ -48,10 +48,11 @@ export default {
   display: flex;
   align-items: center;
   padding: 24px 32px;
+  gap: 12px;
 
   &__title {
     font-size: 16px;
-    width: 150px;
+    min-width: 138px;
   }
 
   &__buttons {

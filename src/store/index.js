@@ -25,6 +25,15 @@ const store = new Vuex.Store({
     },
     selectedUsersLength (state) {
       return Object.keys(state.changedUsersObj).length
+    },
+    currentUsersSelected (state, getters) {
+      if (getters.selectedUsersLength < getters.users.length) {
+        return false
+      }
+
+      return getters.users.every(user => {
+        return getters.isUserSelected(user.id)
+      })
     }
   },
 
@@ -45,6 +54,16 @@ const store = new Vuex.Store({
   },
 
   actions: {
+    toggleCurrentUsers ({ commit, state, getters }, checked) {
+      const stack = checked ? getters.users : state.users
+
+      for (let i = 0; i < stack.length; i++) {
+        commit('toggleUser', {
+          id: stack[i].id,
+          checked
+        })
+      }
+    },
     getUsersList ({ commit }) {
       fetch('/api/users')
         .then(res => res.json())
