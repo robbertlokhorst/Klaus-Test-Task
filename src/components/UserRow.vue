@@ -7,6 +7,7 @@
       <template #checkbox>
         <CheckboxInput
           :is-checked="isSelected"
+          :aria-label="`${isSelected ? 'Deselect' : 'Select'} user`"
           @change="userSelectedUpdate"
         />
       </template>
@@ -26,6 +27,7 @@
             size="sm"
             theme="gray"
             icon-align="left"
+            aria-label="Edit user"
           >
             <img :src="require('@/assets/images/edit.svg')">
             Edit
@@ -34,6 +36,7 @@
             size="sm"
             theme="gray"
             icon
+            aria-label="Delete user"
             @click="deleteUser(item.id)"
           >
             <img :src="require('@/assets/images/trash.svg')">

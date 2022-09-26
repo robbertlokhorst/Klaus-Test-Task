@@ -11,6 +11,7 @@
         theme="gray"
         icon-align="left"
         :disabled="!selectedUsersLength"
+        aria-label="Edit selected user(s)"
       >
         <img :src="require('@/assets/images/edit.svg')">
         Edit
@@ -20,6 +21,7 @@
         theme="gray"
         icon-align="left"
         :disabled="!selectedUsersLength"
+        aria-label="Delete selected user(s)"
         @click="deleteSelectedUsers"
       >
         <img :src="require('@/assets/images/trash.svg')">

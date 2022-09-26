@@ -4,6 +4,7 @@
       <CheckboxInput
         :is-checked="currentUsersSelected"
         :disabled="!users.length"
+        :aria-label="`${currentUsersSelected ? 'Deselect' : 'Select'} all users`"
         @change="toggleCurrentUsers"
       />
     </template>
