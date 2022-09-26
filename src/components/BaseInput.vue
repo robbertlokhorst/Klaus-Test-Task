@@ -12,6 +12,8 @@
     <input
       class="base-input__input"
       v-bind="$attrs"
+      :value="value"
+      @input="handleInput"
     >
   </div>
 </template>
@@ -19,6 +21,7 @@
 <script>
 export default {
   inheritAttrs: false,
+  props: ['value'],
   computed: {
     inputClasses () {
       return {
@@ -27,6 +30,11 @@ export default {
     },
     hasPrepend () {
       return !!this.$slots.prepend
+    }
+  },
+  methods: {
+    handleInput (e) {
+      this.$emit('input', e.target.value)
     }
   }
 }

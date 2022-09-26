@@ -40,7 +40,7 @@ import ListRow from '@/components/ListRow.vue'
 import CheckboxInput from '@/components/CheckboxInput.vue'
 import ListLabel from '@/components/ListLabel.vue'
 import UserRow from './components/UserRow.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -52,7 +52,7 @@ export default {
     ListLabel,
     UserRow
   },
-  computed: mapState(['users']),
+  computed: mapGetters(['users']),
   created () {
     this.getUsersList()
   },

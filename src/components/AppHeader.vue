@@ -4,6 +4,7 @@
       Account users
     </h1>
     <BaseInput
+      v-model="searchQuery"
       type="search"
       placeholder="Search"
       class="search-input"
@@ -19,12 +20,25 @@
 <script>
 import BaseInput from './BaseInput.vue'
 import BaseButton from './BaseButton.vue'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   components: {
     BaseInput,
     BaseButton
-  }
+  },
+  computed: {
+    ...mapState({ searchQueryFromStore: 'searchQuery' }),
+    searchQuery: {
+      get () {
+        return this.searchQueryFromStore
+      },
+      set (value) {
+        this.setSearchQuery(value)
+      }
+    }
+  },
+  methods: mapMutations(['setSearchQuery'])
 }
 </script>
 

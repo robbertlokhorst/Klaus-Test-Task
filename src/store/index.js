@@ -6,10 +6,20 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     users: [],
-    changedUsersObj: {}
+    changedUsersObj: {},
+    searchQuery: ''
   },
 
   getters: {
+    users (state) {
+      const s = state.searchQuery
+
+      const users = state.users.filter(({ name, email, role }) => {
+        return name.toLowerCase().includes(s) || email.toLowerCase().includes(s) || role.toLowerCase().includes(s)
+      })
+
+      return users
+    },
     isUserSelected: state => id => {
       return state.changedUsersObj.hasOwnProperty(id)
     },
@@ -22,13 +32,15 @@ const store = new Vuex.Store({
     setUsersList (state, users) {
       state.users = users
     },
-
     toggleUser (state, { id, checked }) {
       if (checked) {
         Vue.set(state.changedUsersObj, id, checked)
       } else {
         Vue.delete(state.changedUsersObj, id)
       }
+    },
+    setSearchQuery (state, query) {
+      state.searchQuery = query
     }
   },
 
