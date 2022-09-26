@@ -1,19 +1,48 @@
 <template>
-  <div class="list-row">
-    <div class="list-row__col list-row__col--checkbox">
+  <div
+    class="list-row"
+    role="row"
+  >
+    <div
+      :aria-label="cellRole"
+      class="list-row__col list-row__col--checkbox"
+    >
       <slot name="checkbox" />
     </div>
-    <div class="list-row__col list-row__col--user">
+    <div
+      :aria-label="cellRole"
+      class="list-row__col list-row__col--user"
+    >
       <slot name="user" />
     </div>
-    <div class="list-row__col list-row__col--permission">
+    <div
+      :aria-label="cellRole"
+      class="list-row__col list-row__col--permission"
+    >
       <slot name="permission" />
     </div>
-    <div class="list-row__col list-row__col--actions">
+    <div
+      :aria-label="cellRole"
+      class="list-row__col list-row__col--actions"
+    >
       <slot name="actions" />
     </div>
   </div>
 </template>
+
+<script>
+const availableRoles = ['cell', 'columnheader']
+
+export default {
+  props: {
+    cellRole: {
+      type: String,
+      default: 'cell',
+      validator: value => availableRoles.includes(value)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .list-row {

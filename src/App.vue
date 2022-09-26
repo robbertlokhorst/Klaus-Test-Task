@@ -6,19 +6,26 @@
       class="user-list"
     >
       <ActionBar />
-      <HeadRow />
-      <RecycleScroller
-        v-slot="{ item }"
-        class="scroller"
-        :items="users"
-        :item-size="68"
-        key-field="id"
+      <div
+        role="table"
+        aria-label="User list"
+        aria-describedby="main_title"
       >
-        <UserRow
-          :key="item.id"
-          :item="item"
-        />
-      </RecycleScroller>
+        <HeadRow />
+        <RecycleScroller
+          v-slot="{ item }"
+          class="scroller"
+          :items="users"
+          :item-size="68"
+          key-field="id"
+          role="rowgroup"
+        >
+          <UserRow
+            :key="item.id"
+            :item="item"
+          />
+        </RecycleScroller>
+      </div>
     </div>
   </div>
 </template>
@@ -76,10 +83,6 @@ h2 {
   background: white;
   border-radius: 8px;
   height: 726px;
-
-  &__head-row {
-    padding: 0 32px 4px 32px;
-  }
 }
 .scroller {
   height: 624px;

@@ -1,16 +1,23 @@
 <template>
-  <button
-    class="list-label"
-    @click="sortUsersList(sortKey)"
+  <div
+    role="columnheader"
+    :aria-sort="sortingLabel"
   >
-    <slot />
-    <img
-      v-if="isActive"
-      class="list-label__arrow"
-      :class="arrowClasses"
-      :src="require('@/assets/images/arrow-down.svg')"
+    <button
+      class="list-label"
+      aria-label="Sort column"
+      @click="sortUsersList(sortKey)"
     >
-  </button>
+      <slot />
+      <img
+        v-if="isActive"
+        class="list-label__arrow"
+        :class="arrowClasses"
+        :src="require('@/assets/images/arrow-down.svg')"
+        alt=""
+      >
+    </button>
+  </div>
 </template>
 
 <script>
@@ -30,6 +37,13 @@ export default {
     }),
     isActive () {
       return this.sortKeyFromStore === this.sortKey
+    },
+    sortingLabel () {
+      if (this.isActive) {
+        return this.isDescSorting ? 'descending' : 'ascending'
+      }
+
+      return 'descending'
     },
     arrowClasses () {
       return {

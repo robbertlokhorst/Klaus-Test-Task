@@ -1,5 +1,8 @@
 <template>
-  <ListRow class="user-list__head-row">
+  <ListRow
+    class="head-row"
+    cell-role="columnheader"
+  >
     <template #checkbox>
       <CheckboxInput
         :is-checked="currentUsersSelected"
@@ -40,3 +43,9 @@ export default {
   methods: mapActions(['toggleCurrentUsers'])
 }
 </script>
+
+<style scoped>
+.head-row {
+  padding: 0 32px 4px 32px;
+}
+</style>

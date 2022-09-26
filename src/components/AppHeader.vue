@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <h1 class="title">
+    <h1
+      id="main_title"
+      class="title"
+    >
       Account users
     </h1>
     <BaseInput

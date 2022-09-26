@@ -3,6 +3,7 @@
     <ListRow
       class="user-row__list-row"
       :class="listRowClasses"
+      cell-role="cell"
     >
       <template #checkbox>
         <CheckboxInput
