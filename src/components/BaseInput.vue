@@ -71,6 +71,13 @@ export default {
     padding: 9px 12px 8px 12px;
     width: 100%;
 
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
     &::-webkit-input-placeholder {
       color: $c-gray-50;
     }
