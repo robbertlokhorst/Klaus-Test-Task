@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import BaseButton from './BaseButton.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {

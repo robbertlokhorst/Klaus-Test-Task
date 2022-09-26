@@ -49,11 +49,11 @@
 </template>
 
 <script>
-import ListRow from './ListRow.vue'
+import ListRow from '@/components/ListRow.vue'
 import CheckboxInput from '@/components/CheckboxInput.vue'
 import BaseButton from '@/components/BaseButton.vue'
-import RoleBadge from './RoleBadge.vue'
-import UserInfo from './UserInfo.vue'
+import RoleBadge from '@/components/RoleBadge.vue'
+import UserInfo from '@/components/UserInfo.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {

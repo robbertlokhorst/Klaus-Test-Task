@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import BaseInput from './BaseInput.vue'
-import BaseButton from './BaseButton.vue'
+import BaseInput from '@/components/BaseInput.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { mapMutations, mapState } from 'vuex'
 
 export default {

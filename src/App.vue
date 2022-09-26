@@ -34,7 +34,7 @@
 import AppHeader from '@/components/AppHeader.vue'
 import ActionBar from '@/components/ActionBar.vue'
 import HeadRow from '@/components/HeadRow.vue'
-import UserRow from './components/UserRow.vue'
+import UserRow from '@/components/UserRow.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

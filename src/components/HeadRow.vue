@@ -28,7 +28,7 @@
 import ListRow from '@/components/ListRow.vue'
 import { mapGetters, mapActions } from 'vuex'
 import CheckboxInput from '@/components/CheckboxInput.vue'
-import ListLabel from './ListLabel.vue'
+import ListLabel from '@/components/ListLabel.vue'
 
 export default {
   components: {

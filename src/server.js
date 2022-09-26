@@ -1,5 +1,5 @@
 import { createServer } from 'miragejs'
-import users from './users'
+import users from '@/users'
 
 export function makeServer () {
   const server = createServer({

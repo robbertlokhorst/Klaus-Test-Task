@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from '@/App.vue'
 import { makeServer } from '@/server'
 import VueVirtualScroller from 'vue-virtual-scroller'
 import '@/assets/reset.css'
