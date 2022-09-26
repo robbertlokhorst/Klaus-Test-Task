@@ -27,8 +27,6 @@
 import AppHeader from '@/components/AppHeader.vue'
 import ActionBar from '@/components/ActionBar.vue'
 import HeadRow from '@/components/HeadRow.vue'
-import CheckboxInput from '@/components/CheckboxInput.vue'
-import ListLabel from '@/components/ListLabel.vue'
 import UserRow from './components/UserRow.vue'
 import { mapGetters, mapActions } from 'vuex'
 
@@ -38,8 +36,6 @@ export default {
     AppHeader,
     ActionBar,
     HeadRow,
-    CheckboxInput,
-    ListLabel,
     UserRow
   },
   computed: mapGetters(['users']),

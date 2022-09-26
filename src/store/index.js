@@ -7,18 +7,29 @@ const store = new Vuex.Store({
   state: {
     users: [],
     changedUsersObj: {},
-    searchQuery: ''
+    searchQuery: '',
+    sortKey: 'name',
+    isDescSorting: true
   },
 
   getters: {
     users (state) {
       const s = state.searchQuery
 
-      const users = state.users.filter(({ name, email, role }) => {
-        return name.toLowerCase().includes(s) || email.toLowerCase().includes(s) || role.toLowerCase().includes(s)
-      })
-
-      return users
+      return state.users
+        .filter(({ name, email, role }) => {
+          return name.toLowerCase().includes(s) || email.toLowerCase().includes(s) || role.toLowerCase().includes(s)
+        })
+        .sort((a, b) => {
+          let modifier = state.isDescSorting ? 1 : -1
+          if (a[state.sortKey] < b[state.sortKey]) {
+            return -1 * modifier
+          }
+          if (a[state.sortKey] > b[state.sortKey]) {
+            return 1 * modifier
+          }
+          return 0
+        })
     },
     isUserSelected: state => id => {
       return state.changedUsersObj.hasOwnProperty(id)
@@ -61,6 +72,12 @@ const store = new Vuex.Store({
       state.users = difference
       state.changedUsersObj = {}
     },
+    setSortDirection (state, isDesc) {
+      state.isDescSorting = isDesc
+    },
+    setSortKey (state, key) {
+      state.sortKey = key
+    }
   },
 
   actions: {
@@ -80,6 +97,14 @@ const store = new Vuex.Store({
         .then(({ users }) => {
           commit('setUsersList', users)
         })
+    },
+    sortUsersList ({ commit, state }, key) {
+      if (state.sortKey === key) {
+        commit('setSortDirection', !state.isDescSorting)
+      } else {
+        commit('setSortKey', key)
+        commit('setSortDirection', true)
+      }
     }
   }
 })

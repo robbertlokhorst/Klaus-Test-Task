@@ -7,10 +7,14 @@
       />
     </template>
     <template #user>
-      <ListLabel>User</ListLabel>
+      <ListLabel sort-key="name">
+        User
+      </ListLabel>
     </template>
     <template #permission>
-      <ListLabel>Permission</ListLabel>
+      <ListLabel sort-key="role">
+        Permission
+      </ListLabel>
     </template>
   </ListRow>
 </template>
