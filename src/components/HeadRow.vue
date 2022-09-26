@@ -3,6 +3,7 @@
     <template #checkbox>
       <CheckboxInput
         :is-checked="currentUsersSelected"
+        :disabled="!users.length"
         @change="toggleCurrentUsers"
       />
     </template>
@@ -31,7 +32,10 @@ export default {
     CheckboxInput,
     ListLabel
   },
-  computed: mapGetters(['currentUsersSelected']),
+  computed: mapGetters([
+    'currentUsersSelected',
+    'users'
+  ]),
   methods: mapActions(['toggleCurrentUsers'])
 }
 </script>

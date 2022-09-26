@@ -10,6 +10,7 @@
         size="sm"
         theme="gray"
         icon-align="left"
+        :disabled="!selectedUsersLength"
       >
         <img :src="require('@/assets/images/edit.svg')">
         Edit
@@ -18,6 +19,7 @@
         size="sm"
         theme="gray"
         icon-align="left"
+        :disabled="!selectedUsersLength"
         @click="deleteSelectedUsers"
       >
         <img :src="require('@/assets/images/trash.svg')">

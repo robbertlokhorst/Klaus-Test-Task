@@ -45,6 +45,11 @@ export default {
   border-radius: 3px;
   background: white;
   position: relative;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
 
   &:checked {
     background: $c-brand-50;

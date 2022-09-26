@@ -27,9 +27,15 @@ export default {
     },
     iconAlign: {
       type: String,
+      required: false,
+      default: null,
       validator: value => iconAlignOptions.includes(value)
     },
     icon: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }
@@ -40,7 +46,8 @@ export default {
         [`base-button--theme-${this.theme}`]: this.theme,
         [`base-button--size-${this.size}`]: this.size,
         [`base-button--icon-align-${this.iconAlign}`]: this.iconAlign,
-        'base-button--icon': this.icon
+        'base-button--icon': this.icon,
+        'base-button--disabled': this.disabled
       }
     }
   }
@@ -59,12 +66,21 @@ export default {
   display: flex;
   gap: 8px;
   align-items: center;
+  cursor: pointer;
+
+  &:hover:not(.base-button--disabled) {
+    background: darken($c-brand-50, 5%);
+  }
 
   &--theme-gray {
     background: white;
     border: 1px solid $c-gray-30;
     color: $c-gray-70;
     box-shadow: 0px 1px 2px rgba(45, 55, 72, 0.08);
+
+    &:hover:not(.base-button--disabled) {
+      background: lighten($c-gray-30, 5%);
+    }
   }
 
   &--size-sm {
@@ -85,6 +101,10 @@ export default {
 
   &--icon-align-right {
     padding-right: 8px;
+  }
+
+  &--disabled {
+    cursor: default;
   }
 }
 </style>

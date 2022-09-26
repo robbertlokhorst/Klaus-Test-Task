@@ -48,6 +48,7 @@ export default {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
     width: 36px;
     display: flex;
     align-items: center;
@@ -62,6 +63,7 @@ export default {
     line-height: 1.5;
     color: $c-gray-90;
     padding: 9px 12px 8px 12px;
+    width: 100%;
 
     &::-webkit-input-placeholder {
       color: $c-gray-50;
