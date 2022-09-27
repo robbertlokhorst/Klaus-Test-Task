@@ -13,7 +13,12 @@
       class="search-input"
     >
       <template #prepend>
-        <img :src="require('@/assets/images/search.svg')">
+        <img
+          width="16"
+          height="16"
+          alt=""
+          :src="require('@/assets/images/search.svg')"
+        >
       </template>
     </BaseInput>
     <BaseButton>Connect users</BaseButton>

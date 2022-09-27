@@ -30,7 +30,12 @@
             icon-align="left"
             aria-label="Edit user"
           >
-            <img :src="require('@/assets/images/edit.svg')">
+            <img
+              width="16"
+              height="16"
+              alt=""
+              :src="require('@/assets/images/edit.svg')"
+            >
             Edit
           </BaseButton>
           <BaseButton
@@ -40,7 +45,12 @@
             aria-label="Delete user"
             @click="deleteUser(item.id)"
           >
-            <img :src="require('@/assets/images/trash.svg')">
+            <img
+              width="16"
+              height="16"
+              alt=""
+              :src="require('@/assets/images/trash.svg')"
+            >
           </BaseButton>
         </div>
       </template>

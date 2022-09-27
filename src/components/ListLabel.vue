@@ -7,15 +7,16 @@
       class="list-label"
       aria-label="Sort column"
       @click="sortUsersList(sortKey)"
+    <slot />
+    <img
+      v-if="isActive"
+      class="list-label__arrow"
+      :class="arrowClasses"
+      :src="require('@/assets/images/arrow-down.svg')"
+      alt=""
+      width="12"
+      height="12"
     >
-      <slot />
-      <img
-        v-if="isActive"
-        class="list-label__arrow"
-        :class="arrowClasses"
-        :src="require('@/assets/images/arrow-down.svg')"
-        alt=""
-      >
     </button>
   </div>
 </template>
