@@ -1,6 +1,6 @@
 # Klaus Test Task
 
-This template should help get you started developing with Vue 3 in Vite.
+This is my Vue 2 solution for the Klaus test task. 
 
 ## Recommended IDE Setup
 
