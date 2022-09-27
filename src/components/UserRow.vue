@@ -14,6 +14,7 @@
       </template>
       <template #user>
         <UserInfo
+          :id="item.id"
           :avatar="item.avatar"
           :name="item.name"
           :email="item.email"

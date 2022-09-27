@@ -5,8 +5,17 @@
       class="user-info__media"
     >
       <img
-        :key="avatar"
+        v-if="idState.canLoadImage"
+        :key="`${avatar}_image`"
         :src="avatar"
+        class="user-info__image"
+        alt=""
+        @error="idState.canLoadImage = false"
+      >
+      <img
+        v-if="!idState.canLoadImage"
+        :key="`${avatar}_fallback`"
+        src="@/assets/images/klaus.jpg"
         class="user-info__image"
         alt=""
       >
@@ -23,8 +32,20 @@
 </template>
 
 <script>
+import { IdState } from 'vue-virtual-scroller'
+
 export default {
+  mixins: [
+    IdState({
+      idProp: vm => vm.id
+    })
+  ],
   props: {
+    id: {
+      type: Number,
+      default: 0,
+      required: true
+    },
     avatar: {
       type: String,
       default: '',
@@ -39,6 +60,11 @@ export default {
       type: String,
       default: '',
       required: true
+    }
+  },
+  idState () {
+    return {
+      canLoadImage: true
     }
   }
 }
