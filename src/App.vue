@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <main class="wrapper">
     <AppHeader />
     <div
       v-if="users"
@@ -8,6 +8,7 @@
       <ActionBar />
       <div
         role="table"
+        :aria-rowcount="users.length + 1"
         aria-label="User list"
         aria-describedby="main_title"
       >
@@ -27,7 +28,7 @@
         </RecycleScroller>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -68,6 +69,18 @@ html {
 h1,
 h2 {
   font-weight: 500;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 </style>
 

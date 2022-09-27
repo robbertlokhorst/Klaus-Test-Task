@@ -1,12 +1,9 @@
 <template>
-  <div
-    role="columnheader"
-    :aria-sort="sortingLabel"
+  <button
+    class="list-label"
+    aria-label="Sort column"
+    @click="sortUsersList(sortKey)"
   >
-    <button
-      class="list-label"
-      aria-label="Sort column"
-      @click="sortUsersList(sortKey)"
     <slot />
     <img
       v-if="isActive"
@@ -17,8 +14,7 @@
       width="12"
       height="12"
     >
-    </button>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -38,13 +34,6 @@ export default {
     }),
     isActive () {
       return this.sortKeyFromStore === this.sortKey
-    },
-    sortingLabel () {
-      if (this.isActive) {
-        return this.isDescSorting ? 'descending' : 'ascending'
-      }
-
-      return 'descending'
     },
     arrowClasses () {
       return {

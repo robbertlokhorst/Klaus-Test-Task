@@ -21,6 +21,9 @@
         Permission
       </ListLabel>
     </template>
+    <template #actions>
+      <span class="sr-only">Actions</span>
+    </template>
   </ListRow>
 </template>
 

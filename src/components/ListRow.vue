@@ -4,25 +4,27 @@
     role="row"
   >
     <div
-      :aria-label="cellRole"
+      :role="cellRole"
       class="list-row__col list-row__col--checkbox"
     >
       <slot name="checkbox" />
     </div>
     <div
-      :aria-label="cellRole"
+      :role="cellRole"
       class="list-row__col list-row__col--user"
+      :aria-sort="userSort"
     >
       <slot name="user" />
     </div>
     <div
-      :aria-label="cellRole"
+      :role="cellRole"
       class="list-row__col list-row__col--permission"
+      :aria-sort="roleSort"
     >
       <slot name="permission" />
     </div>
     <div
-      :aria-label="cellRole"
+      :role="cellRole"
       class="list-row__col list-row__col--actions"
     >
       <slot name="actions" />
@@ -31,6 +33,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 const availableRoles = ['cell', 'columnheader']
 
 export default {
@@ -39,6 +43,23 @@ export default {
       type: String,
       default: 'cell',
       validator: value => availableRoles.includes(value)
+    }
+  },
+  computed: {
+    ...mapState(['sortKey', 'isDescSorting']),
+    userSort () {
+      if (this.cellRole === 'columnheader' && this.sortKey === 'name') {
+        return this.isDescSorting ? 'descending' : 'ascending'
+      }
+
+      return false
+    },
+    roleSort () {
+      if (this.cellRole === 'columnheader' && this.sortKey === 'role') {
+        return this.isDescSorting ? 'descending' : 'ascending'
+      }
+
+      return false
     }
   }
 }
